@@ -36,11 +36,19 @@ class DataPoint implements IDataPointInterface {
         }
     }
 
+    /**
+     * Get the metric values
+     * @return float
+     */
     public function getMetricValue(): float
     {
         return $this->metricValue;
     }
 
+    /**
+     * Get the time data
+     * @return string
+     */
     public function getTime(): string
     {
         return $this->dtime;
