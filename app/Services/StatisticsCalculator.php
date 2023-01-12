@@ -1,0 +1,48 @@
+<?php
+
+namespace App\Services;
+
+use App\Helpers\Common;
+use App\Interfaces\IStatisticsCalculator;
+use Exception;
+
+class StatisticsCalculator implements IStatisticsCalculator
+{
+    /**
+     * @throws Exception
+     */
+    public function calculate(array $dataPoints, int $unit): array
+    {
+        if (empty($dataPoints) || !($dataPoints[0] instanceof DataPoint)) {
+            throw new Exception("Invalid dataPoints: not an non-empty array of DataPoint objects");
+        }
+        if ($unit <= 0) {
+            throw new Exception("Invalid unit: not a positive integer");
+        }
+        try {
+            $metricValues = array();
+            foreach ($dataPoints as $dataPoint) {
+                $metricValues[] = $dataPoint->getMetricValue();
+            }
+
+            // Convert values to megabits per second
+            $average = Common::average($metricValues) / $unit;
+            $min = min($metricValues);
+            $min = $min / $unit;
+            $max = max($metricValues);
+            $max = $max / $unit;
+            $median = Common::median($metricValues) / $unit;
+
+            return array(
+                'average' => $average,
+                'min' => $min,
+                'max' => $max,
+                'median' => $median,
+            );
+        } catch (Exception $e) {
+            // Handle the exception here
+            throw new Exception("Something went wrong in Statistics");
+        }
+    }
+}
+
