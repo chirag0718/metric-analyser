@@ -13,6 +13,7 @@ class StatisticsCalculator implements IStatisticsCalculator
      */
     public function calculate(array $dataPoints, int $unit): array
     {
+        // Checking common errors
         if (empty($dataPoints) || !($dataPoints[0] instanceof DataPoint)) {
             throw new Exception("Invalid dataPoints: not an non-empty array of DataPoint objects");
         }
@@ -21,6 +22,8 @@ class StatisticsCalculator implements IStatisticsCalculator
         }
         try {
             $metricValues = array();
+
+            // Loop through data-points and finding statistics.
             foreach ($dataPoints as $dataPoint) {
                 $metricValues[] = $dataPoint->getMetricValue();
             }
@@ -39,6 +42,8 @@ class StatisticsCalculator implements IStatisticsCalculator
                 'max' => $max,
                 'median' => $median,
             );
+
+            // Mapping with number format of decimal 2
             $result = array_map(function ($value) { return number_format($value, 2); }, $result);
             return $result;
         } catch (Exception $e) {
