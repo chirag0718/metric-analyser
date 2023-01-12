@@ -18,7 +18,7 @@ class MetricAnalyserController extends Controller
                 throw new Exception("Input folder not found.");
             }
             // This output folder can be set in configuration or env
-            $output_folder = public_path('myoutputs/');
+            $output_folder = public_path('outputs/');
             if (!is_dir($output_folder)) {
                 throw new Exception("Output folder not found.");
             }
@@ -26,17 +26,22 @@ class MetricAnalyserController extends Controller
             if (empty($json_files)) {
                 throw new Exception("No JSON files found in input folder.");
             }
-            $i = 0;
+
             foreach ($json_files as $json_file) {
+
+                // Here we can skip if needs but just taking json file for now
+                $path_parts  = pathinfo($json_file);
+                if (trim($path_parts['extension']) != 'json') {
+                    throw new Exception("File is not json: " . $json_file);
+                }
                 if (!file_exists($json_file)) {
                     throw new Exception("File not found: " . $json_file);
                 }
                 $dataset = file_get_contents($json_file);
                 $outputs = $outputGenerator->generate($dataset);
-                file_put_contents(public_path('myoutputs/' . $i . '.output'), $outputs);
-                echo 'myoutputs/' . $i . '.output ----success';
+                file_put_contents(public_path('outputs/' . $path_parts['filename'] . '.output'), $outputs);
+                echo 'outputs/' . $path_parts['filename'] . '.output ----success';
                 echo "<br>";
-                $i++;
             }
         } catch (Exception $e) {
             // log the error message and return an error message to the user

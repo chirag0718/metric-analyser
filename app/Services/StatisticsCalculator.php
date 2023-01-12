@@ -33,12 +33,14 @@ class StatisticsCalculator implements IStatisticsCalculator
             $max = $max / $unit;
             $median = Common::median($metricValues) / $unit;
 
-            return array(
+            $result = array(
                 'average' => $average,
                 'min' => $min,
                 'max' => $max,
                 'median' => $median,
             );
+            $result = array_map(function ($value) { return round($value, 2); }, $result);
+            return $result;
         } catch (Exception $e) {
             // Handle the exception here
             throw new Exception("Something went wrong in Statistics");

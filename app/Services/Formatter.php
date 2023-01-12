@@ -15,7 +15,7 @@ class Formatter
             $firstDate = $dataPoints[0]->getTime();
             $lastDate = $dataPoints[count($dataPoints) - 1]->getTime();
 
-            $output = "Metric Analyser v1.0.0\n===============================\n\n";
+            $output = "SamKnows Metric Analyser v1.0.0\n===============================\n\n";
             $output .= "Period checked:\n\n";
             $output .= "    From: " . $firstDate . "\n";
             $output .= "    To:   " . $lastDate . "\n\n";
