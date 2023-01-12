@@ -24,7 +24,7 @@ class Common
      * @param $array
      * @return mixed
      */
-    public static function median($array)
+    public static function median($array): mixed
     {
         // Sort metric values in ascending order
         sort($array);
