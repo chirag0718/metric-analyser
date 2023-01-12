@@ -39,7 +39,7 @@ class StatisticsCalculator implements IStatisticsCalculator
                 'max' => $max,
                 'median' => $median,
             );
-            $result = array_map(function ($value) { return round($value, 2); }, $result);
+            $result = array_map(function ($value) { return number_format($value, 2); }, $result);
             return $result;
         } catch (Exception $e) {
             // Handle the exception here
