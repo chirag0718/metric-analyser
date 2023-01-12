@@ -24,10 +24,10 @@ class Formatter
             }
             $output .= "Statistics:\n\n";
             $output .= "    Unit: Megabits per second\n\n";
-            $output .= "    Average: " . round($statistics['average'], 2) . "\n";
+            $output .= "    Average: " . ($statistics['average']) . "\n";
             $output .= "    Min: " . $statistics['min'] . "\n";
             $output .= "    Max: " . $statistics['max'] . "\n";
-            $output .= "    Median: " . round($statistics['median'], 2) . "\n";
+            $output .= "    Median: " . round($statistics['median']) . "\n";
             $under_performing = $statistics['under_performed'];
             if (empty($under_performing[0])) {
                 $output .= "\nNo under-performing periods found.";
