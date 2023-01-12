@@ -6,6 +6,12 @@ use Exception;
 
 class Formatter
 {
+    /**
+     * Formatter of output data
+     * @param $dataPoints
+     * @param $statistics
+     * @return string
+     */
     public function format($dataPoints, $statistics): string
     {
         try {

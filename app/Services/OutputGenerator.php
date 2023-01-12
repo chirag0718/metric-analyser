@@ -25,6 +25,9 @@ class OutputGenerator
     }
 
     /**
+     * Generating the output
+     * @param $json
+     * @return string
      * @throws InvalidJsonException
      */
     public function generate($json): string

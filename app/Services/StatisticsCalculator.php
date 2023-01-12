@@ -9,6 +9,10 @@ use Exception;
 class StatisticsCalculator implements IStatisticsCalculator
 {
     /**
+     * Calculate min, max, average and median
+     * @param array $dataPoints
+     * @param int $unit
+     * @return array
      * @throws Exception
      */
     public function calculate(array $dataPoints, int $unit): array
