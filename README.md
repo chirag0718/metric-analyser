@@ -18,6 +18,7 @@ cd metric-analyser
 php artisan serve
 
 ```
+Before that put inputs folder into public/inputs in Laravel project.
 After that run below url to generate output files.
 ```
 http://127.0.0.1:8000/metric-analyser
