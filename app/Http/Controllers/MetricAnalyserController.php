@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Services\OutputGenerator;
 use Exception;
-use Illuminate\Http\Request;
 
 class MetricAnalyserController extends Controller
 {

@@ -48,8 +48,7 @@ class StatisticsCalculator implements IStatisticsCalculator
             );
 
             // Mapping with number format of decimal 2
-            $result = array_map(function ($value) { return number_format($value, 2); }, $result);
-            return $result;
+            return array_map(function ($value) { return number_format($value, 2); }, $result);
         } catch (Exception $e) {
             // Handle the exception here
             throw new Exception("Something went wrong in Statistics");

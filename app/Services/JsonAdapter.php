@@ -3,12 +3,13 @@
 namespace App\Services;
 
 use App\Exceptions\InvalidJsonException;
+use Exception;
 
 class JsonAdapter
 {
     /**
      * @throws InvalidJsonException
-     * @throws \Exception
+     * @throws Exception
      */
     public function adapt($json): array
     {
