@@ -12,6 +12,8 @@ class Formatter
             if (empty($dataPoints)) {
                 throw new Exception("No data points provided.");
             }
+
+            // Format the *.output file with concatenating string
             $firstDate = $dataPoints[0]->getTime();
             $lastDate = $dataPoints[count($dataPoints) - 1]->getTime();
 
@@ -28,6 +30,8 @@ class Formatter
             $output .= "    Min: " . $statistics['min'] . "\n";
             $output .= "    Max: " . $statistics['max'] . "\n";
             $output .= "    Median: " . round($statistics['median']) . "\n";
+
+            // Displaying under performing periods.
             $under_performing = $statistics['under_performed'];
             if (empty($under_performing[0])) {
                 $output .= "\nNo under-performing periods found.";
