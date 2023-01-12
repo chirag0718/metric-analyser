@@ -36,8 +36,10 @@ class MetricAnalyserController extends Controller
                 if (!file_exists($json_file)) {
                     throw new Exception("File not found: " . $json_file);
                 }
+                // This part can be handle as InputReader (function or class)
                 $dataset = file_get_contents($json_file);
                 $outputs = $outputGenerator->generate($dataset);
+                // This part can be handle as OutputWriter (function or class)
                 file_put_contents(public_path('outputs/' . $path_parts['filename'] . '.output'), $outputs);
                 echo 'outputs/' . $path_parts['filename'] . '.output ----success';
                 echo "<br>";
