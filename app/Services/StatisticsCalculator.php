@@ -52,7 +52,7 @@ class StatisticsCalculator implements IStatisticsCalculator
         } catch (Exception $e) {
             // Handle the exception here
             throw new Exception("Something went wrong in Statistics");
-        }
+        } 
     }
 }
 
